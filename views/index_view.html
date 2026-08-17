@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artévia – Fashion That Moves With You</title>
+  <meta name="description"
+    content="Artévia – Discover elevated everyday essentials for Men, Women, and Kids. Shop the New Collection 2024." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=3.0" />
+  <link rel="stylesheet" href="/assets/css/home-collections.css" />
+  <script src="/assets/js/video-scroll.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar" id="top-bar">
+    <span class="top-bar__left">FREE DELIVERY ON ORDERS ABOVE ₺1000</span>
+    <span class="top-bar__right">
+      <a href="/#site-footer" id="download-app-link">DOWNLOAD APP</a>
+      <span class="separator">|</span>
+      <a href="/#site-footer" id="track-order-link">TRACK ORDER</a>
+      <span class="separator">|</span>
+      <a href="/#site-footer" id="help-link">HELP</a>
+    </span>
+  </div>
+
+  <!-- MAIN NAVIGATION -->
+  <style>
+    /* WOMEN PREMIUM NAVBAR STYLES FOR MAIN PAGE */
+    .w-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 60px;
+      background-color: #1a3a2a;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .w-nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .w-nav-links li a {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #c6a87c;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .w-nav-links li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1.5px;
+      bottom: -4px;
+      left: 0;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    .w-nav-links li a:hover {
+      color: #fff;
+    }
+
+    .w-nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .w-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      color: #c6a87c;
+      text-decoration: none;
+      font-style: italic;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .w-cart-btn {
+      background: none;
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #c6a87c;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .w-cart-btn::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1.5px;
+      bottom: -4px;
+      left: 0;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    .w-cart-btn:hover {
+      color: #fff;
+    }
+
+    .w-cart-btn:hover::after {
+      width: 100%;
+    }
+
+    .w-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .w-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #1a3a2a;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+      padding-top: 15px;
+      border: 1px solid rgba(198, 168, 124, 0.2);
+      border-top: none;
+    }
+
+    .w-dropdown-content a {
+      color: #c6a87c !important;
+      padding: 12px 20px !important;
+      text-decoration: none;
+      display: block;
+      font-size: 11px !important;
+      letter-spacing: 0.14em !important;
+    }
+
+    .w-dropdown-content a::after {
+      display: none !important;
+    }
+
+    .w-dropdown-content a:hover {
+      background-color: rgba(198, 168, 124, 0.1);
+      color: #fff !important;
+    }
+
+    .w-dropdown:hover .w-dropdown-content {
+      display: block;
+    }
+
+    /* SCROLL VIDEO STYLES */
+    .brand-hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .scroll-video-section {
+      height: 400vh;
+      /* scrollable distance */
+      position: relative;
+      background-color: #1a3a2a;
+    }
+
+    .scroll-video-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-video-sticky video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+
+    .scroll-video-overlay {
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      pointer-events: none;
+    }
+
+    .scroll-video-overlay h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-style: italic;
+      color: #c6a87c;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .scroll-video-overlay p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+  <nav class="w-navbar">
+    <ul class="w-nav-links">
+      <li class="w-dropdown">
+        <a href="/collections" class="w-dropbtn">KOLEKSİYONLAR</a>
+        <div class="w-dropdown-content">
+          <a href="/collection/medieval">MEDIEVAL</a>
+          <a href="/collection/graffiti">GRAFFITI</a>
+          <a href="/collection/sweatshirt">SWEATSHIRT</a>
+        </div>
+      </li>
+      <li><a href="/men">ERKEK</a></li>
+      <li><a href="/women">KADIN</a></li>
+    </ul>
+    <a href="/" class="w-logo">Artévia</a>
+        <ul class="w-nav-links">
+      <li><a href="#" style="color: #c6a87c;">ARAMA</a></li>
+      <li><a href="#" style="color: #c6a87c;" onclick="event.preventDefault(); openFavDrawer()">FAVORİLER</a></li>
+      <li><button class="w-cart-btn" id="open-cart-btn" style="color: #c6a87c;" onclick="openCartDrawer()">SEPET (<span id="w-cart-count">0</span>)</button></li>
+
+      <!-- NEW: Authentication Buttons -->
+      <li id="auth-buttons" style="display: flex; gap: 1rem;">
+        <span onclick="window.location.href='/auth?mode=login'" style="cursor: pointer; padding: 6px 14px; color: #c6a87c; transition: color 0.3s; font-family: 'Outfit', sans-serif; letter-spacing: 0.14em; font-size: 11px; text-transform: uppercase; font-weight: 500;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">LOG IN</span>
+        <span onclick="window.location.href='/auth?mode=signup'" style="cursor: pointer; padding: 6px 14px; color: #c6a87c; transition: color 0.3s; font-family: 'Outfit', sans-serif; letter-spacing: 0.14em; font-size: 11px; text-transform: uppercase; font-weight: 500;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">SIGN UP</span>
+      </li>
+
+      <li id="user-profile-menu" class="w-dropdown" style="display: none; position: relative;">
+        <span style="cursor: pointer; color: #c6a87c; padding: 6px 14px; display: flex; align-items: center; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </span>
+        <div class="w-dropdown-content" style="right: 0; left: auto; min-width: 220px; padding-top: 15px; border: 1px solid rgba(198,168,124,0.2); border-top: none; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+          <a href="#">My Account</a>
+          <a href="#">Order Tracking & History</a>
+          <a href="#">My Wishlist / Saved Items</a>
+          <a href="#">Settings</a>
+          <div style="height: 1px; background-color: rgba(198,168,124,0.2); margin: 4px 0;"></div>
+          <a href="#" onclick="toggleAuthState(false); return false;" style="color: #ff4d4d !important; display: flex; align-items: center; justify-content: space-between;">Log Out 
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <style>
+    /* BRAND HOMEPAGE SPECIFIC STYLES */
+    .brand-hero {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 81px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      justify-content: center;
+      background-color: #1a3a2a;
+      overflow: hidden;
+    }
+
+    .brand-hero img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .brand-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+    }
+
+    .brand-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 100px;
+      font-weight: 300;
+      font-style: italic;
+      margin: 0;
+      color: #c6a87c;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-hero-subtitle {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+
+    .brand-story {
+      padding: 100px 20px;
+      background-color: #f7f7f7;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .brand-story-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-style: italic;
+      color: #1a3a2a;
+      margin-bottom: 30px;
+    }
+
+    .brand-story-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 700px;
+      color: #555;
+    }
+
+    .brand-banner {
+      display: flex;
+      width: 100%;
+      height: 60vh;
+    }
+
+    .brand-banner-half {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .brand-banner-half img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      filter: brightness(0.7);
+    }
+
+    .brand-banner-half:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.5);
+    }
+
+    .brand-banner-text {
+      position: relative;
+      z-index: 2;
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      color: #fff;
+      letter-spacing: 0.2em;
+      border: 1px solid #fff;
+      padding: 15px 40px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .brand-banner-half:hover .brand-banner-text {
+      background: #fff;
+      color: #1a3a2a;
+    }
+
+    /* SCROLL VIDEO STYLES */
+    .brand-hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .scroll-video-section {
+      height: 400vh;
+      /* scrollable distance */
+      position: relative;
+      background-color: #1a3a2a;
+    }
+
+    .scroll-video-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-video-sticky video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+
+    .scroll-video-overlay {
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      pointer-events: none;
+    }
+
+    .scroll-video-overlay h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-style: italic;
+      color: #c6a87c;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .scroll-video-overlay p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+
+  <!-- BRAND HERO -->
+  <section class="brand-hero">
+    <video src="/assets/videos/Cinematic_K_video_seconds.mp4" id="heroVideo" autoplay muted playsinline
+      style="transform: scale(1.15); transform-origin: center;"></video>
+    <div class="brand-hero-content">
+      <h1 class="brand-hero-title">Artévia</h1>
+      <div class="brand-hero-subtitle">Fashion That Moves With You</div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const heroVid = document.getElementById("heroVideo");
+      if (heroVid) {
+        // Skip the first 4 seconds (intro text)
+        heroVid.currentTime = 4;
+        // Loop back to 4 seconds instead of 0
+        heroVid.addEventListener("ended", () => {
+          heroVid.currentTime = 4;
+          heroVid.play();
+        });
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+<!-- NEW COLLECTIONS SHOWCASE SECTION -->
+  <section class="w-full bg-[#0f291e] py-24 px-4 md:px-8 relative overflow-hidden" style="margin-top: -50px; padding-top: 150px;">
+    <!-- Subtle Background Texture/Glow -->
+    <div class="absolute inset-0 pointer-events-none opacity-20">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#d4af37] rounded-full blur-[150px]"></div>
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#d4af37] rounded-full blur-[150px]"></div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-20">
+        <h2 class="font-['Cormorant_Garamond'] italic text-5xl md:text-6xl text-[#d4af37] mb-6 drop-shadow-md">
+          The Grand Archives
+        </h2>
+        <div class="h-[1px] w-32 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto"></div>
+        <p class="font-['Outfit'] text-[#d4af37] opacity-80 mt-6 tracking-[0.2em] uppercase text-xs">
+          Curated Masterpieces
+        </p>
+      </div>
+
+      <!-- 4-Column Responsive Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 lg:gap-y-0 lg:divide-x lg:divide-[#d4af37]/20">
+        <!-- COLUMN 1: MEDIEVAL -->
+        <div class="group relative px-6 flex flex-col items-center cursor-pointer">
+          <div class="border border-[#d4af37]/40 px-8 py-3 mb-10 bg-[#0f291e] shadow-[0_0_15px_rgba(212,175,55,0.05)] transition-all duration-500 group-hover:border-[#d4af37] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] z-20 -mt-5">
+            <h3 class="font-['Cormorant_Garamond'] font-semibold text-xl tracking-[0.25em] text-[#d4af37] uppercase m-0">Medieval</h3>
+          </div>
+          <div class="relative w-full aspect-[3/4] overflow-hidden rounded-sm border border-[#d4af37]/10 transition-colors duration-500 group-hover:border-[#d4af37]/40">
+            <div class="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity duration-700 z-10"></div>
+            <img src="/assets/images/collections/medival2.jpg" alt="Medieval Collection" class="w-full h-full object-cover transform transition-transform duration-[1.5s] group-hover:scale-110" />
+            <div class="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.8)] z-20 pointer-events-none"></div>
+          </div>
+          <button class="mt-10 font-['Outfit'] tracking-[0.2em] text-xs font-semibold uppercase text-[#d4af37] border border-[#d4af37]/50 px-10 py-4 transition-all duration-500 group-hover:bg-[#d4af37] group-hover:text-[#0f291e] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] bg-transparent">
+            KEŞFET
+          </button>
+        </div>
+
+        <!-- COLUMN 2: GRAFFITI -->
+        <div class="group relative px-6 flex flex-col items-center cursor-pointer">
+          <div class="border border-[#d4af37]/40 px-8 py-3 mb-10 bg-[#0f291e] shadow-[0_0_15px_rgba(212,175,55,0.05)] transition-all duration-500 group-hover:border-[#d4af37] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] z-20 -mt-5">
+            <h3 class="font-['Cormorant_Garamond'] font-semibold text-xl tracking-[0.25em] text-[#d4af37] uppercase m-0">Graffiti</h3>
+          </div>
+          <div class="relative w-full aspect-[3/4] overflow-hidden rounded-sm border border-[#d4af37]/10 transition-colors duration-500 group-hover:border-[#d4af37]/40">
+            <div class="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity duration-700 z-10"></div>
+            <img src="/assets/images/collections/grafitti2.jpg" alt="Graffiti Collection" class="w-full h-full object-cover transform transition-transform duration-[1.5s] group-hover:scale-110" />
+            <div class="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.8)] z-20 pointer-events-none"></div>
+          </div>
+          <button class="mt-10 font-['Outfit'] tracking-[0.2em] text-xs font-semibold uppercase text-[#d4af37] border border-[#d4af37]/50 px-10 py-4 transition-all duration-500 group-hover:bg-[#d4af37] group-hover:text-[#0f291e] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] bg-transparent">
+            KEŞFET
+          </button>
+        </div>
+
+        <!-- COLUMN 3: SWEATSHIRT -->
+        <div class="group relative px-6 flex flex-col items-center cursor-pointer">
+          <div class="border border-[#d4af37]/40 px-8 py-3 mb-10 bg-[#0f291e] shadow-[0_0_15px_rgba(212,175,55,0.05)] transition-all duration-500 group-hover:border-[#d4af37] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] z-20 -mt-5">
+            <h3 class="font-['Cormorant_Garamond'] font-semibold text-xl tracking-[0.25em] text-[#d4af37] uppercase m-0">Sweatshirt</h3>
+          </div>
+          <div class="relative w-full aspect-[3/4] overflow-hidden rounded-sm border border-[#d4af37]/10 transition-colors duration-500 group-hover:border-[#d4af37]/40">
+            <div class="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity duration-700 z-10"></div>
+            <img src="/assets/images/collections/sweattshirt2.jpg" alt="Sweatshirt Collection" class="w-full h-full object-cover transform transition-transform duration-[1.5s] group-hover:scale-110" />
+            <div class="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.8)] z-20 pointer-events-none"></div>
+          </div>
+          <button class="mt-10 font-['Outfit'] tracking-[0.2em] text-xs font-semibold uppercase text-[#d4af37] border border-[#d4af37]/50 px-10 py-4 transition-all duration-500 group-hover:bg-[#d4af37] group-hover:text-[#0f291e] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] bg-transparent">
+            KEŞFET
+          </button>
+        </div>
+
+        <!-- COLUMN 4: ESSENTIALS -->
+        <div class="group relative px-6 flex flex-col items-center cursor-pointer">
+          <div class="border border-[#d4af37]/40 px-8 py-3 mb-10 bg-[#0f291e] shadow-[0_0_15px_rgba(212,175,55,0.05)] transition-all duration-500 group-hover:border-[#d4af37] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] z-20 -mt-5">
+            <h3 class="font-['Cormorant_Garamond'] font-semibold text-xl tracking-[0.25em] text-[#d4af37] uppercase m-0">Essentials</h3>
+          </div>
+          <div class="relative w-full aspect-[3/4] overflow-hidden rounded-sm border border-[#d4af37]/10 transition-colors duration-500 group-hover:border-[#d4af37]/40">
+            <div class="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity duration-700 z-10"></div>
+            <img src="/assets/images/cat_outerwear.png" alt="Essentials Collection" class="w-full h-full object-cover transform transition-transform duration-[1.5s] group-hover:scale-110" />
+            <div class="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.8)] z-20 pointer-events-none"></div>
+          </div>
+          <button class="mt-10 font-['Outfit'] tracking-[0.2em] text-xs font-semibold uppercase text-[#d4af37] border border-[#d4af37]/50 px-10 py-4 transition-all duration-500 group-hover:bg-[#d4af37] group-hover:text-[#0f291e] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] bg-transparent">
+            KEŞFET
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="site-footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo">Artévia</span>
+        <p>Fashion that moves with you.<br />Curated essentials for the modern wardrobe.</p>
+        <div class="footer__socials">
+          <a href="#" id="footer-instagram" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <a href="#" id="footer-pinterest" aria-label="Pinterest">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4c-.88 0-1.7-.29-2.36-.77L8 20" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+          </a>
+          <a href="#" id="footer-youtube" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>SHOP</h4>
+        <ul>
+          <li><a href="/men" id="footer-men">Men</a></li>
+          <li><a href="/women" id="footer-women">Women</a></li>
+          <li><a href="/#new-season-section" id="footer-new">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>HELP</h4>
+        <ul>
+          <li><a href="/#site-footer" id="footer-faq">FAQ</a></li>
+          <li><a href="/#site-footer" id="footer-shipping">Shipping & Returns</a></li>
+          <li><a href="/#site-footer" id="footer-sizing">Size Guide</a></li>
+          <li><a href="/#site-footer" id="footer-contact">Contact Us</a></li>
+          <li><a href="/#site-footer" id="footer-track">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>NEWSLETTER</h4>
+        <p class="footer__newsletter-desc">Get the latest trends and exclusive offers.</p>
+        <form class="footer__form" id="newsletter-form" onsubmit="return false;">
+          <input type="email" id="newsletter-email" placeholder="Your email address" />
+          <button type="submit" id="newsletter-submit">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Artévia. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="#" id="footer-privacy">Privacy Policy</a>
+        <a href="#" id="footer-terms">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer__header">
+      <span class="mobile-drawer__logo">Artévia</span>
+      <button class="mobile-drawer__close" id="mobile-close-btn" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <ul class="mobile-drawer__links">
+      <li><a href="/men" class="mobile-nav-link" id="m-nav-men">MEN</a></li>
+      <li><a href="/women" class="mobile-nav-link" id="m-nav-women">WOMEN</a></li>
+    </ul>
+    <div class="mobile-drawer__divider"></div>
+    <ul class="mobile-drawer__actions">
+      <li>
+        <button class="mobile-action-btn" id="m-search-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          SEARCH
+        </button>
+      </li>
+      <li>
+        <button class="mobile-action-btn" id="m-login-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.5">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          LOGIN
+        </button>
+      </li>
+      <li>
+        <button class="mobile-action-btn" id="m-wishlist-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          WISHLIST
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <script src="/assets/js/script.js?v=3.0"></script>
+  <script src="assets/js/home.js"></script>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">SEPETİNİZ</h2>
+      <button class="cart-drawer-close" onclick="closeCartDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-drawer-items">
+      <!-- MOCK ITEM -->
+      <div class="cart-drawer-item" id="mock-cart-item">
+        <img src="/assets/images/prod_sweatshirt.png" alt="Hoodies" class="cart-item-img" />
+        <div class="cart-item-details">
+          <div class="cart-item-title">Artévia Premium Hoodie</div>
+          <div class="cart-item-variant">Beden: L | Renk: Siyah</div>
+          <div class="cart-item-price">₺2500</div>
+          <div style="display:flex; align-items:center; gap:15px;">
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="updateMockCart(-1)">-</button>
+              <span id="mock-cart-qty">1</span>
+              <button class="qty-btn" onclick="updateMockCart(1)">+</button>
+            </div>
+            <button onclick="removeMockCart()"
+              style="background:none; border:none; color:rgba(255,255,255,0.5); font-family:'Outfit', sans-serif; font-size:11px; text-decoration:underline; cursor:pointer;">Sil</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-total">
+        <span>ARA TOPLAM</span>
+        <span>₺<span id="mock-total-price">2500</span></span>
+      </div>
+      <button class="cart-drawer-checkout-btn">ÖDEME YAP</button>
+    </div>
+  </div>
+
+
+  <!-- FAVORITES DRAWER -->
+  <div class="fav-drawer-overlay" id="favDrawerOverlay" onclick="closeFavDrawer()"></div>
+  <div class="fav-drawer" id="favDrawer">
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">FAVORİLER</h2>
+      <button class="cart-drawer-close" onclick="closeFavDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="fav-drawer-items">
+      <!-- Dynamic Items -->
+    </div>
+  </div>
+
+</body>
+
+</html>

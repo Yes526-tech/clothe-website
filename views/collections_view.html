@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artévia - All Collections</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="/assets/css/style.css?v=3.0" />
+  
+  <style>
+    body {
+      background-color: #1a3a2a;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    .w-dropdown { position: relative; display: inline-block; }
+    .w-dropdown-content {
+      display: none; position: absolute; background-color: #1a3a2a; min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); z-index: 1000; top: 100%; left: 0;
+      padding-top: 15px; border: 1px solid rgba(198, 168, 124, 0.2); border-top: none;
+    }
+    .w-dropdown-content a {
+      color: #c6a87c !important; padding: 12px 20px !important; text-decoration: none;
+      display: block; font-size: 11px !important; letter-spacing: 0.14em !important;
+    }
+    .w-dropdown-content a::after { display: none !important; }
+    .w-dropdown-content a:hover { background-color: rgba(198, 168, 124, 0.1); color: #fff !important; }
+    .w-dropdown:hover .w-dropdown-content { display: block; }
+
+    /* EXPANDING ACCORDION GALLERY */
+    .accordion-container {
+      display: flex;
+      width: 100%;
+      height: calc(100vh - 81px); /* minus navbar */
+    }
+
+    .accordion-item {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+    .accordion-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.4) grayscale(50%);
+      transition: filter 0.6s ease;
+    }
+
+    .accordion-item:hover {
+      flex: 3;
+    }
+
+    .accordion-item:hover img {
+      filter: brightness(0.8) grayscale(0%);
+    }
+
+    .accordion-content {
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+      opacity: 0.7;
+      transition: all 0.6s ease;
+    }
+
+    .accordion-item:hover .accordion-content {
+      opacity: 1;
+      bottom: 80px;
+    }
+
+    .accordion-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-style: italic;
+      color: #fff;
+      margin: 0 0 15px 0;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+      white-space: nowrap;
+    }
+
+    .accordion-btn {
+      display: inline-block;
+      padding: 10px 30px;
+      border: 1px solid #c6a87c;
+      color: #c6a87c;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: rgba(26, 58, 42, 0.4);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .accordion-item:hover .accordion-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .accordion-btn:hover {
+      background: #c6a87c;
+      color: #1a3a2a;
+    }
+
+    @media (max-width: 768px) {
+      .accordion-container {
+        flex-direction: column;
+      }
+      .accordion-item {
+        width: 100%;
+        flex: 1;
+      }
+      .accordion-item img {
+        width: 100%;
+        height: 100vh;
+      }
+      .accordion-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="w-navbar" style="border-bottom: 1px solid rgba(198,168,124,0.2);">
+    <ul class="w-nav-links">
+      <li class="w-dropdown">
+        <a href="/collections" class="w-dropbtn" style="color: #c6a87c;">KOLEKSİYONLAR</a>
+        <div class="w-dropdown-content">
+          <a href="/collection/medieval">MEDIEVAL</a>
+          <a href="/collection/graffiti">GRAFFITI</a>
+          <a href="/collection/sweatshirt">SWEATSHIRT</a>
+        </div>
+      </li>
+      <li><a href="/men" style="color: #c6a87c;">ERKEK</a></li>
+      <li><a href="/women" style="color: #c6a87c;">KADIN</a></li>
+    </ul>
+    <a href="/" class="w-logo" style="color: #c6a87c;">Artévia</a>
+        <ul class="w-nav-links">
+      <li><a href="#" style="color: #c6a87c;">ARAMA</a></li>
+      <li><a href="#" style="color: #c6a87c;" onclick="event.preventDefault(); openFavDrawer()">FAVORİLER</a></li>
+      <li><button class="w-cart-btn" id="open-cart-btn" style="color: #c6a87c;" onclick="openCartDrawer()">SEPET (<span id="w-cart-count">0</span>)</button></li>
+
+      <!-- NEW: Authentication Buttons -->
+      <li id="auth-buttons" style="display: flex; gap: 1rem;">
+        <span onclick="window.location.href='/auth?mode=login'" style="cursor: pointer; padding: 6px 14px; color: #c6a87c; transition: color 0.3s; font-family: 'Outfit', sans-serif; letter-spacing: 0.14em; font-size: 11px; text-transform: uppercase; font-weight: 500;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">LOG IN</span>
+        <span onclick="window.location.href='/auth?mode=signup'" style="cursor: pointer; padding: 6px 14px; color: #c6a87c; transition: color 0.3s; font-family: 'Outfit', sans-serif; letter-spacing: 0.14em; font-size: 11px; text-transform: uppercase; font-weight: 500;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">SIGN UP</span>
+      </li>
+
+      <li id="user-profile-menu" class="w-dropdown" style="display: none; position: relative;">
+        <span style="cursor: pointer; color: #c6a87c; padding: 6px 14px; display: flex; align-items: center; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </span>
+        <div class="w-dropdown-content" style="right: 0; left: auto; min-width: 220px; padding-top: 15px; border: 1px solid rgba(198,168,124,0.2); border-top: none; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+          <a href="#">My Account</a>
+          <a href="#">Order Tracking & History</a>
+          <a href="#">My Wishlist / Saved Items</a>
+          <a href="#">Settings</a>
+          <div style="height: 1px; background-color: rgba(198,168,124,0.2); margin: 4px 0;"></div>
+          <a href="#" onclick="toggleAuthState(false); return false;" style="color: #ff4d4d !important; display: flex; align-items: center; justify-content: space-between;">Log Out 
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 4-COLUMN EXPANDING ACCORDION HUB -->
+  <div class="accordion-container">
+    
+    <a href="/collection/medieval" class="accordion-item">
+      <img src="/assets/images/collections/medival1.jpg" alt="Medieval Collection" />
+      <div class="accordion-content">
+        <h2 class="accordion-title">Medieval</h2>
+        <div class="accordion-btn">KEŞFET</div>
+      </div>
+    </a>
+    
+    <a href="/collection/graffiti" class="accordion-item">
+      <img src="/assets/images/collections/grafitti1.jpg" alt="Graffiti Collection" />
+      <div class="accordion-content">
+        <h2 class="accordion-title">Graffiti</h2>
+        <div class="accordion-btn">KEŞFET</div>
+      </div>
+    </a>
+    
+    <a href="/collection/sweatshirt" class="accordion-item">
+      <img src="/assets/images/collections/sweattshirt1.jpg" alt="Sweatshirt Collection" />
+      <div class="accordion-content">
+        <h2 class="accordion-title">Sweatshirt</h2>
+        <div class="accordion-btn">KEŞFET</div>
+      </div>
+    </a>
+
+    <a href="/men" class="accordion-item">
+      <img src="/assets/images/brand_model.png" alt="Essentials Collection" />
+      <div class="accordion-content">
+        <h2 class="accordion-title">Essentials</h2>
+        <div class="accordion-btn">KEŞFET</div>
+      </div>
+    </a>
+    
+  </div>
+
+  <script src="/assets/js/script.js?v=3.0"></script>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">SEPETİNİZ</h2>
+      <button class="cart-drawer-close" onclick="closeCartDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="cart-drawer-items">
+      <!-- MOCK ITEM -->
+      <div class="cart-drawer-item" id="mock-cart-item">
+        <img src="/assets/images/prod_sweatshirt.png" alt="Hoodies" class="cart-item-img" />
+        <div class="cart-item-details">
+          <div class="cart-item-title">Artévia Premium Hoodie</div>
+          <div class="cart-item-variant">Beden: L | Renk: Siyah</div>
+          <div class="cart-item-price">₺2500</div>
+          <div style="display:flex; align-items:center; gap:15px;">
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="updateMockCart(-1)">-</button>
+              <span id="mock-cart-qty">1</span>
+              <button class="qty-btn" onclick="updateMockCart(1)">+</button>
+            </div>
+            <button onclick="removeMockCart()" style="background:none; border:none; color:rgba(255,255,255,0.5); font-family:'Outfit', sans-serif; font-size:11px; text-decoration:underline; cursor:pointer;">Sil</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-total">
+        <span>ARA TOPLAM</span>
+        <span>₺<span id="mock-total-price">2500</span></span>
+      </div>
+      <button class="cart-drawer-checkout-btn">ÖDEME YAP</button>
+    </div>
+  </div>
+
+
+  <!-- FAVORITES DRAWER -->
+  <div class="fav-drawer-overlay" id="favDrawerOverlay" onclick="closeFavDrawer()"></div>
+  <div class="fav-drawer" id="favDrawer">
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">FAVORİLER</h2>
+      <button class="cart-drawer-close" onclick="closeFavDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="fav-drawer-items">
+      <!-- Dynamic Items -->
+    </div>
+  </div>
+
+</body>
+</html>

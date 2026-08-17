@@ -1,0 +1,23 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "> Fashion that moves with you. A modern, premium static website served via Nginx in Docker.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:frontend": "cd frontend && npm install && npm run build",
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.2",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
+  }
+}

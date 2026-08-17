@@ -1,0 +1,129 @@
+/* home-collections.css */
+
+.collections-showcase {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.collection-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.collection-bg, .collection-bg-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.collection-bg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+}
+
+.grid-img-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.collection-bg img, .grid-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  transition: transform 10s ease-out, filter 0.4s ease;
+}
+
+.grid-img-wrap:hover img {
+  filter: brightness(0.85);
+}
+
+.collection-section:hover .collection-bg img, 
+.collection-section:hover .grid-img-wrap img {
+  filter: brightness(0.7);
+}
+
+.collection-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.collection-label {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: #c6a87c;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.collection-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0 0 30px 0;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.collection-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  border: 1px solid #c6a87c;
+  color: #c6a87c;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s, background 0.3s, color 0.3s;
+}
+
+.collection-btn:hover {
+  background: #c6a87c;
+  color: #111;
+}
+
+/* Animations for intersection observer */
+.collection-section.is-visible .collection-label,
+.collection-section.is-visible .collection-title,
+.collection-section.is-visible .collection-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .collection-title {
+    font-size: 48px;
+  }
+  .collection-bg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}

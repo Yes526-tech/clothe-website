@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artévia - Women's Collection</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="/assets/css/style.css?v=3.0" />
+  <link rel="stylesheet" href="/assets/css/collection-page.css?v=3.0" />
+  
+  <style>
+    .w-dropdown { position: relative; display: inline-block; }
+    .w-dropdown-content {
+      display: none; position: absolute; background-color: #1a3a2a; min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); z-index: 1000; top: 100%; left: 0;
+      padding-top: 15px; border: 1px solid rgba(198, 168, 124, 0.2); border-top: none;
+    }
+    .w-dropdown-content a {
+      color: #c6a87c !important; padding: 12px 20px !important; text-decoration: none;
+      display: block; font-size: 11px !important; letter-spacing: 0.14em !important;
+    }
+    .w-dropdown-content a::after { display: none !important; }
+    .w-dropdown-content a:hover { background-color: rgba(198, 168, 124, 0.1); color: #fff !important; }
+    .w-dropdown:hover .w-dropdown-content { display: block; }
+
+    .cp-hero-subtitle {
+      position: absolute; z-index: 2; color: #fff; font-family: 'Outfit', sans-serif;
+      font-size: 14px; letter-spacing: 0.3em; margin-top: 120px; text-transform: uppercase; text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="w-navbar" style="background-color: #1a3a2a; border-bottom: 1px solid rgba(198,168,124,0.2);">
+    <ul class="w-nav-links">
+      <li class="w-dropdown">
+        <a href="/collections" class="w-dropbtn" style="color: #c6a87c;">KOLEKSİYONLAR</a>
+        <div class="w-dropdown-content">
+          <a href="/collection/medieval">MEDIEVAL</a>
+          <a href="/collection/graffiti">GRAFFITI</a>
+          <a href="/collection/sweatshirt">SWEATSHIRT</a>
+        </div>
+      </li>
+      <li><a href="/men" style="color: #c6a87c;">ERKEK</a></li>
+      <li><a href="/women" style="color: #c6a87c;">KADIN</a></li>
+    </ul>
+    <a href="/" class="w-logo" style="color: #c6a87c;">Artévia</a>
+        <ul class="w-nav-links">
+      <li><a href="#" style="color: #c6a87c;">ARAMA</a></li>
+      <li><a href="#" style="color: #c6a87c;" onclick="event.preventDefault(); openFavDrawer()">FAVORİLER</a></li>
+      <li><button class="w-cart-btn" id="open-cart-btn" style="color: #c6a87c;" onclick="openCartDrawer()">SEPET (<span id="w-cart-count">0</span>)</button></li>
+
+      <!-- NEW: Authentication Buttons -->
+      <li id="auth-buttons" style="display: flex; gap: 1rem;">
+        <span onclick="window.location.href='/auth?mode=login'" style="cursor: pointer; padding: 6px 14px; color: #c6a87c; transition: color 0.3s; font-family: 'Outfit', sans-serif; letter-spacing: 0.14em; font-size: 11px; text-transform: uppercase; font-weight: 500;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">LOG IN</span>
+        <span onclick="window.location.href='/auth?mode=signup'" style="cursor: pointer; padding: 6px 14px; color: #c6a87c; transition: color 0.3s; font-family: 'Outfit', sans-serif; letter-spacing: 0.14em; font-size: 11px; text-transform: uppercase; font-weight: 500;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">SIGN UP</span>
+      </li>
+
+      <li id="user-profile-menu" class="w-dropdown" style="display: none; position: relative;">
+        <span style="cursor: pointer; color: #c6a87c; padding: 6px 14px; display: flex; align-items: center; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#c6a87c'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </span>
+        <div class="w-dropdown-content" style="right: 0; left: auto; min-width: 220px; padding-top: 15px; border: 1px solid rgba(198,168,124,0.2); border-top: none; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+          <a href="#">My Account</a>
+          <a href="#">Order Tracking & History</a>
+          <a href="#">My Wishlist / Saved Items</a>
+          <a href="#">Settings</a>
+          <div style="height: 1px; background-color: rgba(198,168,124,0.2); margin: 4px 0;"></div>
+          <a href="#" onclick="toggleAuthState(false); return false;" style="color: #ff4d4d !important; display: flex; align-items: center; justify-content: space-between;">Log Out 
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="cp-hero">
+    <h1 class="cp-hero-title">Artévia</h1>
+    <div class="cp-hero-subtitle">Creative Clothing</div>
+    <img src="/assets/images/hero_model.png" alt="Artévia - Women's Collection Hero" />
+  </section>
+
+  <!-- FEATURES BAR -->
+  <section class="cp-features">
+    <div class="cp-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      <div class="cp-feature-text">
+        <span class="cp-feature-title">WORLDWIDE SHIPPING</span>
+        <span class="cp-feature-desc">DELIVERING GLOBALLY</span>
+      </div>
+    </div>
+    <div class="cp-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <div class="cp-feature-text">
+        <span class="cp-feature-title">LIMITED DROPS</span>
+        <span class="cp-feature-desc">EXCLUSIVE RELEASES</span>
+      </div>
+    </div>
+    <div class="cp-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      <div class="cp-feature-text">
+        <span class="cp-feature-title">PREMIUM QUALITY</span>
+        <span class="cp-feature-desc">BUILT TO LAST</span>
+      </div>
+    </div>
+    <div class="cp-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <div class="cp-feature-text">
+        <span class="cp-feature-title">SECURE CHECKOUT</span>
+        <span class="cp-feature-desc">100% SAFE & SECURE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <section class="cp-products-section">
+              SEPETE EKLE
+            </button>
+          </div>
+        </div>
+        <div class="cp-card-info">
+          <div class="cp-card-title">Tees</div>
+          <div class="cp-card-price">₺1500</div>
+          <div class="cp-card-arrow">&rarr;</div>
+        </div>
+      </a>
+      <a href="#" class="cp-card">
+        <div class="cp-card-img-wrapper">
+          <img src="/assets/images/prod_bag.png" alt="Accessories" class="cp-card-img" />
+          <div class="cp-card-actions">
+            <button class="cp-action-btn cp-fav-btn" onclick="event.preventDefault(); toggleFavorite(this);" aria-label="Add to Favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <button class="cp-action-btn cp-add-btn" onclick="event.preventDefault(); showCartModal(this);" aria-label="Add to Cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-9.8-3.4h11.6l2.3-10.4H5.4l-.8-3.7H1v2h2.2l3.4 15.6.8-3.5z"></path></svg>
+              SEPETE EKLE
+            </button>
+          </div>
+        </div>
+        <div class="cp-card-info">
+          <div class="cp-card-title">Accessories</div>
+          <div class="cp-card-price">₺1500</div>
+          <div class="cp-card-arrow">&rarr;</div>
+        </div>
+      </a>
+      <a href="#" class="cp-card">
+        <div class="cp-card-img-wrapper">
+          <img src="/assets/images/cat_outerwear.png" alt="Jackets" class="cp-card-img" />
+          <div class="cp-card-actions">
+            <button class="cp-action-btn cp-fav-btn" onclick="event.preventDefault(); toggleFavorite(this);" aria-label="Add to Favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <button class="cp-action-btn cp-add-btn" onclick="event.preventDefault(); showCartModal(this);" aria-label="Add to Cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-9.8-3.4h11.6l2.3-10.4H5.4l-.8-3.7H1v2h2.2l3.4 15.6.8-3.5z"></path></svg>
+              SEPETE EKLE
+            </button>
+          </div>
+        </div>
+        <div class="cp-card-info">
+          <div class="cp-card-title">Jackets</div>
+          <div class="cp-card-price">₺1500</div>
+          <div class="cp-card-arrow">&rarr;</div>
+        </div>
+      </a>
+      <a href="#" class="cp-card">
+        <div class="cp-card-img-wrapper">
+          <img src="/assets/images/cat_knitwear.png" alt="Extras" class="cp-card-img" />
+          <div class="cp-card-actions">
+            <button class="cp-action-btn cp-fav-btn" onclick="event.preventDefault(); toggleFavorite(this);" aria-label="Add to Favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <button class="cp-action-btn cp-add-btn" onclick="event.preventDefault(); showCartModal(this);" aria-label="Add to Cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-9.8-3.4h11.6l2.3-10.4H5.4l-.8-3.7H1v2h2.2l3.4 15.6.8-3.5z"></path></svg>
+              SEPETE EKLE
+            </button>
+          </div>
+        </div>
+        <div class="cp-card-info">
+          <div class="cp-card-title">Extras</div>
+          <div class="cp-card-price">₺1500</div>
+          <div class="cp-card-arrow">&rarr;</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- CUSTOM CART SUCCESS MODAL -->
+  <div class="cart-modal-overlay" id="cartModal">
+    <div class="cart-modal-box">
+      <div class="cart-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 class="cart-modal-title">Ürün Sepete Eklendi</h3>
+      <div class="cart-modal-buttons">
+        <button class="cart-modal-btn btn-outline" onclick="closeCartModal()">Alışverişe Devam Et</button>
+        <button class="cart-modal-btn btn-solid" onclick="closeCartModal(); openCartDrawer();">Ödemeye Geç</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/script.js?v=3.0"></script>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">SEPETİNİZ</h2>
+      <button class="cart-drawer-close" onclick="closeCartDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="cart-drawer-items">
+      <!-- MOCK ITEM -->
+      <div class="cart-drawer-item" id="mock-cart-item">
+        <img src="/assets/images/prod_sweatshirt.png" alt="Hoodies" class="cart-item-img" />
+        <div class="cart-item-details">
+          <div class="cart-item-title">Artévia Premium Hoodie</div>
+          <div class="cart-item-variant">Beden: L | Renk: Siyah</div>
+          <div class="cart-item-price">₺2500</div>
+          <div style="display:flex; align-items:center; gap:15px;">
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="updateMockCart(-1)">-</button>
+              <span id="mock-cart-qty">1</span>
+              <button class="qty-btn" onclick="updateMockCart(1)">+</button>
+            </div>
+            <button onclick="removeMockCart()" style="background:none; border:none; color:rgba(255,255,255,0.5); font-family:'Outfit', sans-serif; font-size:11px; text-decoration:underline; cursor:pointer;">Sil</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-total">
+        <span>ARA TOPLAM</span>
+        <span>₺<span id="mock-total-price">2500</span></span>
+      </div>
+      <button class="cart-drawer-checkout-btn">ÖDEME YAP</button>
+    </div>
+  </div>
+
+
+  <!-- FAVORITES DRAWER -->
+  <div class="fav-drawer-overlay" id="favDrawerOverlay" onclick="closeFavDrawer()"></div>
+  <div class="fav-drawer" id="favDrawer">
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">FAVORİLER</h2>
+      <button class="cart-drawer-close" onclick="closeFavDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="fav-drawer-items">
+      <!-- Dynamic Items -->
+    </div>
+  </div>
+
+</body>
+</html>
